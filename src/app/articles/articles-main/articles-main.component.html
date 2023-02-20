@@ -1,1 +1,78 @@
-<p>articles-main works!</p>
+<mat-toolbar>
+    <span>Articles</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button color="primary" (click)="NewArticle()" matTooltip="Create New Article" matTooltipPosition="above">
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-toolbar>
+    <mat-form-field appearance="fill">
+        <mat-label>Store</mat-label>
+        <mat-select [(ngModel)]="StoreFilter.Id" (selectionChange)="FilterChange()">
+            <mat-option [value]="0">All Stores</mat-option>
+            <mat-option *ngFor="let item of StoreList" [value]="item.Id">{{item.Name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</mat-toolbar>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{ element.Description }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let element">{{ element.Price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Total in Shelf">
+            <th mat-header-cell *matHeaderCellDef>Total in Shelf</th>
+            <td mat-cell *matCellDef="let element">{{ element.Total_In_Shelf }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Total in Vault">
+            <th mat-header-cell *matHeaderCellDef>Total in Vault</th>
+            <td mat-cell *matCellDef="let element">{{ element.Total_In_Vault }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Store Name">
+            <th mat-header-cell *matHeaderCellDef>Store Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.Store_Name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Options">
+            <th mat-header-cell class="example-options" *matHeaderCellDef>Options</th>
+            <td mat-cell class="example-options" *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)="EditArticle(element)" matTooltip="Edit Article" matTooltipPosition="above">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="DeleteArticle(element)" matTooltip="Delete Article" matTooltipPosition="above">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="ColumnList"></tr>
+        <tr mat-row *matRowDef="let row; columns: ColumnList"></tr>
+    </table>
+
+    <mat-paginator
+        [pageSizeOptions]="[10, 20, 50]"
+        showFirstLastButtons
+        aria-label="Select page">
+    </mat-paginator>
+</div>
+

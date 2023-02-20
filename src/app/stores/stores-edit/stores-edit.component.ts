@@ -8,9 +8,9 @@ import { Store } from '../../shared/interfaces/store.interface';
 
 
 @Component({
-  selector: 'app-stores-edit',
-  templateUrl: './stores-edit.component.html',
-  styleUrls: ['./stores-edit.component.css']
+    selector: 'app-stores-edit',
+    templateUrl: './stores-edit.component.html',
+    styleUrls: ['./stores-edit.component.css']
 })
 export class StoresEditComponent implements OnInit {
     EditAction: string = "";
@@ -40,6 +40,11 @@ export class StoresEditComponent implements OnInit {
     }
 
     SaveStore(): void {
+        if(this.StoreModel.Name.trim().length <= 0) {
+            this.openSnackBar("Must Specify Name");
+            return;
+        }
+
         if(this.StoresSvc.IsNewStore) {
             // Insert
             let NewStore: Store = {
