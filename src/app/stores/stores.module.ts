@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { StoresRoutingModule } from './stores-routing.module';
 import { MaterialImportsModule } from '../shared/material-imports.module';
@@ -14,6 +15,7 @@ import { StoresEditComponent } from './stores-edit/stores-edit.component';
     ],
     imports: [
         CommonModule,
+        FormsModule,
         StoresRoutingModule,
         MaterialImportsModule
     ]

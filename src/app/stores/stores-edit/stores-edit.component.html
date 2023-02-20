@@ -1,1 +1,52 @@
-<p>stores-edit works!</p>
+<mat-toolbar>
+    <span>{{EditAction}}</span>
+</mat-toolbar>
+
+<mat-card style="width: 100%;">
+    <mat-card-content>
+        <mat-grid-list cols="12" rowHeight="80px">
+            <mat-grid-tile colspan="2">
+                <mat-form-field appearance="fill" class="input_large">
+                    <mat-label>Id</mat-label>
+                    <input matInput
+                        type="text"
+                        [(ngModel)]="StoreModel.Id"
+                        readonly>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="10"></mat-grid-tile>
+
+            <mat-grid-tile colspan="12">
+                <mat-form-field appearance="fill" class="input_large">
+                    <mat-label>Name</mat-label>
+                    <input matInput
+                        type="text"
+                        maxlength="100"
+                        [(ngModel)]="StoreModel.Name"
+                        required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="12">
+                <mat-form-field appearance="fill" class="input_large">
+                    <mat-label>Address</mat-label>
+                    <input matInput
+                        type="text"
+                        maxlength="200"
+                        [(ngModel)]="StoreModel.Address">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="5"></mat-grid-tile>
+            <mat-grid-tile colspan="1">
+                <button mat-raised-button color="primary" (click)="SaveStore()">Save</button>
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="1">
+                <button mat-raised-button (click)="CancelStore()">Cancel</button>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="5"></mat-grid-tile>
+
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>

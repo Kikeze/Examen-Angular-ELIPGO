@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Are you sure?</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            Delete "{{data}}"
+            <br>
+            Continue?
+        </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button color="warn" (click)="delete()">Yes, delete</button>
+        <button mat-button color="basic" (click)="cancel()">No, cancel</button>
+    </mat-card-actions>
+</mat-card>

@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolBarComponent } from './shared/tool-bar/tool-bar.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ToolBarComponent,
+        ConfirmDialogComponent
     ],
     imports: [
         BrowserModule,
